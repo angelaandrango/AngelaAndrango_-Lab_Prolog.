@@ -17,8 +17,9 @@ edge(c, a).
 % 1.2. Test reachability using path/2.
 path(X, Y) :- edge(X, Y).
 path(X, Y) :- edge(X, Z), path(Z, Y).
-
+%-----------------------------------
 % 2. CYCLES (se usa path_safe)
+&-----------------------------------
 path_safe(X, Y) :- path_safe(X, Y, []).
 path_safe(X, Y, _) :- edge(X, Y).
 path_safe(X, Y, Visited) :-
@@ -62,3 +63,4 @@ find_maze_path(X, Y, Visited, Path) :-
     door(X, Z),
     \+ member(Z, Visited),
     find_maze_path(Z, Y, [Z|Visited], Path).
+
